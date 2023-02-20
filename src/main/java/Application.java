@@ -79,7 +79,7 @@ public class Application {
     @Bean
     @Scope("singleton")
     public Multiplier getMultiplierBean(){
-        return new Multiplier(adder);
+        return new Multiplier();
     }
     /**
      * TODO: Write the @Bean configuration for Squarer here! Note that a Squarer relies on Multiplier as a dependency.

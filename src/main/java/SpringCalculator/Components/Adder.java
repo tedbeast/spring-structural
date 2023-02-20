@@ -1,20 +1,22 @@
 package SpringCalculator.Components;
 
-import org.springframework.stereotype.Component;
 /**
  * For the purpose of this application, the multiplier class is dependent on the functionality of the Adder class,
  * making this a dependency of Multiplier.
  *
- * This class has been marked as a component, which makes this a potential bean that can be wired into another component
+ * This class is a potential bean that can be wired into another component
  * via dependency injection. A Bean is an object that is instantiated by Spring, rather than by the developer.
  * Dependency injection is the process of Spring inserting the instantiated Bean into another class.
  * "wiring" them together. This allows us to achieve loose coupling - we can switch which implementation of a class
  * we're currently using, or modify the existing classes we're using, while making less changes to the classes that
- * depend on this class. The @Component annotation informs Spring that this class should be treated as a bean.
+ * depend on this class.
+ *
+ * In future examples, rather than using the @Bean annotation, we could simply mark an entire class with @Component
+ * annotation and leverage Component Scanning to automatically generate beans of the annotated class without any
+ * configuration required.
  *
  * There is no need to change anything within this class.
  */
-@Component
 public class Adder {
     /**
      * Return the sum of two numbers.

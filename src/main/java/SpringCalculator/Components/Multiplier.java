@@ -7,30 +7,29 @@ import org.springframework.stereotype.Component;
  * For the purpose of this application, the Squarer class is dependent on the functionality of the Multiplier class,
  * making this a dependency of Multiplier.
  *
- * This class has been marked as a component, which makes this a potential bean that can be wired into another component
+ * This class is a potential bean that can be wired into another component
  * via dependency injection. A Bean is an object that is instantiated by Spring, rather than by the developer.
  * Dependency injection is the process of Spring inserting the instantiated Bean into another class.
  * "wiring" them together. This allows us to achieve loose coupling - we can switch which implementation of a class
  * we're currently using, or modify the existing classes we're using, while making less changes to the classes that
- * depend on this class. The @Component annotation informs Spring that this class should be treated as a bean.
+ * depend on this class.
  *
- * There is no need to change anything within this class.
+ * In future examples, rather than using the @Bean annotation, we could simply mark an entire class with @Component
+ * annotation and leverage Component Scanning to automatically generate beans of the annotated class without any
+ * configuration required.
  */
-@Component
 public class Multiplier {
-    Adder adder;
-
     /**
      * The @Autowired annotation will inform Spring to automatically find the most appropriate bean to wire into this
      * class (based on the name & type of the Object used.) The @Autowired annotation can be used in 3 different ways:
-     * constructor injection (as used here), setter injection (over a setter method), and field injection (above the
-     * injected field declaration itself).
+     * constructor injection (above a constructor), setter injection (over a setter method), and field injection
+     * (above the injected field declaration itself, as is done here).
+     *
+     * Generally, field injection is not recommended, but it works for this example.
      * @param adder
      */
     @Autowired
-    public Multiplier(Adder adder){
-        this.adder = adder;
-    }
+    Adder adder;
 
     /**
      * Instead of using the * operator normally, leverage the Adder dependency to multiply numbers the hard way,
